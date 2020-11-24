@@ -9,13 +9,10 @@ CHART_VERSION ?= 0.14.3
 #Unless your upgrading to 0.15.x where you can create creds
 #via helm.
 
-DEV_CLUSTER ?= p4-development
-DEV_PROJECT ?= planet-4-151612
-DEV_ZONE ?= us-central1-a
+DEV_CLUSTER ?= testrc
+DEV_PROJECT ?= jendevops1
+DEV_ZONE ?= australia-southeast1-c
 
-PROD_CLUSTER ?= planet4-production
-PROD_PROJECT ?= planet4-production
-PROD_ZONE ?= us-central1-a
 
 .DEFAULT_TARGET: status
 
@@ -29,9 +26,6 @@ init:
 	helm repo update
 
 dev: lint init
-ifndef CI
-	$(error Please commit and push, this is intended to be run in a CI environment)
-endif
 	gcloud config set project $(DEV_PROJECT)
 	gcloud container clusters get-credentials $(DEV_CLUSTER) --zone $(DEV_ZONE) --project $(DEV_PROJECT)
 
