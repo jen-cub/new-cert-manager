@@ -27,7 +27,7 @@ jobs:
   dev:
     <<: *defaults
     environment:
-      GOOGLE_PROJECT_ID: planet-4-151612
+      GOOGLE_PROJECT_ID: jendevops1
     steps:
       - checkout
       - run: activate-gcloud-account.sh
