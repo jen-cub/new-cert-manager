@@ -41,7 +41,7 @@ dev: lint init
 	$(MAKE) history
 
 #Create ClusterIssuers
-#	./create_clusterissuer.sh
+	./create_clusterissuer.sh
 
 prod: lint init
 ifndef CI
