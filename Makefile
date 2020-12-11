@@ -21,7 +21,6 @@ lint:
 	@find . -type f -name '*.yaml' | xargs yamllint
 
 init:
-	helm init --client-only
 	helm repo add jetstack https://charts.jetstack.io
 	helm repo update
 
