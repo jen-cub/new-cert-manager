@@ -54,11 +54,10 @@ endif
 		./create_crds.sh
 
 	-kubectl label namespace $(NAMESPACE) certmanager.k8s.io/disable-validation=true
-	helm upgrade --install --force --wait $(RELEASE) \
-		--namespace=$(NAMESPACE) \
-		--version $(CHART_VERSION) \
-		-f values.yaml \
-		$(CHART_NAME)
+	helm3 upgrade $(RELEASE) $(CHART_NAME) \
+		--install --force --wait
+		--create-namespace=$(NAMESPACE) \
+		-f values.yaml
 	$(MAKE) history
 
 #Create ClusterIssuers
