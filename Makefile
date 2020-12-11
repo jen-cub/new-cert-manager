@@ -21,8 +21,8 @@ lint:
 	@find . -type f -name '*.yaml' | xargs yamllint
 
 init:
-	helm repo add jetstack https://charts.jetstack.io
-	helm repo update
+	helm3 repo add jetstack https://charts.jetstack.io
+	helm3 repo update
 
 dev: lint init
 	gcloud config set project $(DEV_PROJECT)
@@ -32,7 +32,7 @@ dev: lint init
 	./create_crds.sh
 
 	-kubectl label namespace $(NAMESPACE) certmanager.k8s.io/disable-validation=true
-	helm upgrade --install --force --wait $(RELEASE) \
+	helm3 upgrade --install --force --wait $(RELEASE) \
 		--namespace=$(NAMESPACE) \
 		--version $(CHART_VERSION) \
 		-f values.yaml \
