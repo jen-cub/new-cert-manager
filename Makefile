@@ -63,7 +63,7 @@ endif
 #	./create_clusterissuer.sh
 
 destroy:
-	helm delete --purge $(RELEASE)
+	helm3 uninstall $(RELEASE)
 
 history:
-	helm history $(RELEASE) --max=5
+	helm3 history $(RELEASE) --max=5
