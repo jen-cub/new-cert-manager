@@ -32,7 +32,7 @@ dev: lint init
 	./create_crds.sh
 
 	-kubectl label namespace $(NAMESPACE) certmanager.k8s.io/disable-validation=true
-	helm3 upgrade --install --force --wait $(RELEASE) \
+	helm3 upgrade --install --wait $(RELEASE) \
 		--namespace=$(NAMESPACE) \
 		--version $(CHART_VERSION) \
 		-f values.yaml \
@@ -54,7 +54,7 @@ endif
 
 	-kubectl label namespace $(NAMESPACE) certmanager.k8s.io/disable-validation=true
 	helm3 upgrade $(RELEASE) $(CHART_NAME) \
-		--install --force --wait
+		--install --wait
 		--create-namespace=$(NAMESPACE) \
 		-f values.yaml
 	$(MAKE) history
