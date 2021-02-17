@@ -29,7 +29,7 @@ dev: lint init
 	gcloud container clusters get-credentials $(DEV_CLUSTER) --zone $(DEV_ZONE) --project $(DEV_PROJECT)
 
 #Install the CustomResourceDefinition resources first separately
-	./create_crds.sh
+#	./create_crds.sh
 
 	-kubectl label namespace $(NAMESPACE) certmanager.k8s.io/disable-validation=true
 	helm3 upgrade --install --wait $(RELEASE) \
@@ -40,7 +40,7 @@ dev: lint init
 	$(MAKE) history
 
 #Create ClusterIssuers
-	./create_clusterissuer.sh
+#	./create_clusterissuer.sh
 
 prod: lint init
 ifndef CI
